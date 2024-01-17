@@ -1,0 +1,40 @@
+### praktische alias
+
+alias.graph=log --all --graph --decorate --oneline
+alias.reca=git graph --no-pager log --oneline --graph --decorate -n10 --all
+alias.recd=log --decorate --patch @{upstream}^^^..HEAD
+alias.lg1=log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+alias.lg2=log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+alias.lg3=log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C(reset)' --all
+alias.lg=lg1
+alias.graph=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr) %Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit
+alias.graph2=log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci)%C(bold blue)<%an>%Creset'
+
+init.defaultbranch=main
+#old# init.defaultbranch=master
+
+merge.conflictstyle=diff3
+merge.tool=winmerge
+mergetool.winmerge.cmd="/c/PortableApps.fjg/WinMergePortable/WinMergePortable.exe" -e -u -dl "Base" -dr "Mine" "$LOCAL" "$MERGED" "$REMOTE"
+mergetool.prompt=false
+
+user.name=...
+user.email=...
+
+
+
+
+### merging
+# video for merging with winmerge
+- https://www.youtube.com/watch?v=DZkTMamCWFc
+
+# configuration for git bash and (portable) winmerge as mergetool (difftool)
+- https://stackoverflow.com/questions/10713925/how-can-i-make-winmerge-my-git-mergetool
+git config --global merge.tool winmerge
+git config --replace --global mergetool.winmerge.cmd "\"C:\Program Files (x86)\WinMerge\WinMergeU.exe\" -e -u -dl \"Base\" -dr \"Mine\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+git config --global mergetool.prompt false
+# or for portable version of winmerge
+git config --global mergetool.winmerge.cmd "\"/c/PortableApps/WinMergePortable/WinMergePortable.exe\" -e -u -dl \"Base\" -dr \"Mine\" \"\$LOCAL\" \"\$MERGED\" \"\$REMOTE\""
+
+
+###  
